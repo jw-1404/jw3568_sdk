@@ -1,0 +1,32 @@
+#! /bin/sh
+NUM=`ifconfig -a | grep mlan0`
+if [ "$NUM" = "" ]; then
+    exit 1
+fi
+
+[ -f /usr/libexec/bluetooth/bluetoothd ] || exit 0
+[ -f /usr/libexec/bluetooth/obexd ] || exit 0
+
+case "$1" in
+    start)
+        export DBUS_SESSION_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+		hciattach /dev/ttyS8 any -s 115200 115200 flow > /dev/null
+		hciconfig hci0 up
+        /usr/libexec/bluetooth/bluetoothd &
+        /usr/libexec/bluetooth/obexd -a -r /root &
+        ;;
+    stop)
+        killall bluetoothd
+        killall obexd
+		hciconfig hci0 down
+		killall hciattach
+        ;;
+    restart|reload)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+

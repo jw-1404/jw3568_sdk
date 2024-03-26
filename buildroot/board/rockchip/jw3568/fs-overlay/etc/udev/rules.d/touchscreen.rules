@@ -1,0 +1,4 @@
+ SUBSYSTEM=="input", ACTION=="change|add", ATTRS{name}=="edt-ft5406", ENV{WL_OUTPUT}="DSI-1"
+ SUBSYSTEM=="input", ACTION=="change|add", ATTRS{uniq}=="dsi", ATTRS{name}=="Goodix Capacitive TouchScreen", ENV{WL_OUTPUT}="DSI-1"
+ SUBSYSTEM=="input", ACTION=="change|add", ATTRS{uniq}=="lvds", ATTRS{name}=="Goodix Capacitive TouchScreen", ENV{WL_OUTPUT}="LVDS-1"
+
