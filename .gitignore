@@ -37,3 +37,5 @@ external
 rkflash.sh
 tools
 release_ok3568.sh
+envsetup.sh
+mkfirmware.sh
