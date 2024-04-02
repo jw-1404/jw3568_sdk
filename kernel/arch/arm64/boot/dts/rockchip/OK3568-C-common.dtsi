@@ -846,7 +846,7 @@
 &uart8 {
 	status = "okay";
 	pinctrl-names = "default";
-	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
+	pinctrl-0 = <&uart8m0_xfer>;
 };
 
 &bus_npu {
