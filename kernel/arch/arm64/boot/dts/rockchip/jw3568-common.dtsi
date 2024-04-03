@@ -846,7 +846,7 @@
 &uart8 {
 	status = "okay";
 	pinctrl-names = "default";
-	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
+	pinctrl-0 = <&uart8m0_xfer>;
 };
 
 &bus_npu {
@@ -860,7 +860,7 @@
 	assigned-clock-rates = <200000000>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&can0m0_pins>;
-	status = "okay";
+	// status = "okay";
 };
 
 &can1 {
@@ -868,7 +868,7 @@
 	assigned-clock-rates = <200000000>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&can1m1_pins>;
-	status = "okay";
+	// status = "okay";
 };
 
 &can2 {
