@@ -18,7 +18,7 @@
 #include "video_gst_rtsp.config"
 #include "rk356x_arm64.config"
 #include "test.config"
-BR2_TARGET_GENERIC_ROOT_PASSWD="root"
+BR2_TARGET_GENERIC_ROOT_PASSWD="jw3568"
 BR2_TARGET_GENERIC_GETTY_BAUDRATE_115200=y
 BR2_TARGET_LOCALTIME="Asia/Shanghai"
 BR2_ROOTFS_OVERLAY="board/rockchip/jw3568/fs-overlay/"
@@ -99,3 +99,4 @@ BR2_GDB_VERSION="8.1.1"
 
 # jianwei-specific
 #include "jianwei.config"
+#include "boost.config"
