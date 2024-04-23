@@ -1,4 +1,0 @@
-config BR2_PACKAGE_XDMA
-    bool "xlinix_xdma_pcie_driver"
-	help
-	  Extra device module for Xlinix xdma PCIe IP

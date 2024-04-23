@@ -1,7 +1,5 @@
 menu "Target packages"
 
-	source "package/xdma/Config.in"
-	source "package/xdma-lite/Config.in"
 	source "package/busybox/Config.in"
 	source "package/rockchip/Config.in"
 	source "package/forlinx/Config.in"
