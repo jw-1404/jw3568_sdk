@@ -33,7 +33,7 @@ export RK_CFG_PCBA=
 # Build jobs
 export RK_JOBS=4
 # target chip
-export RK_TARGET_PRODUCT=ok3568
+export RK_TARGET_PRODUCT=jw3568
 # Set rootfs type, including ext2 ext4 squashfs
 export RK_ROOTFS_TYPE=ext4
 # yocto machine
