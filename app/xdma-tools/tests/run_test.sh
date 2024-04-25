@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#---------------------------------------------------------------------
-# Script variables
-#---------------------------------------------------------------------
-tool_path=../src
-
 # Size of PCIe DMA transfers that will be used for this test.
 # Make sure valid addresses exist in the FPGA when modifying this
 # variable. Addresses in the range of 0 - (4 * transferSize) will  
@@ -21,14 +16,14 @@ transferCount=1
 isStreaming=0
 h2cChannels=0
 for ((i=0; i<=3; i++)); do
-	v=`$tool_path/reg_rw /dev/xdma0_control 0x0${i}00 w`
+	v=`xdma_reg_rw /dev/xdma0_control 0x0${i}00 w`
 	returnVal=$?
 	if [ $returnVal -ne 0 ]; then
 		break;
 	fi
 
 	#v=`echo $v | grep -o  '): 0x[0-9a-f]*'`
-	statusRegVal=`$tool_path/reg_rw /dev/xdma0_control 0x0${i}00 w | grep "Read.*:" | sed 's/Read.*: 0x\([a-z0-9]*\)/\1/'`
+	statusRegVal=`xdma_reg_rw /dev/xdma0_control 0x0${i}00 w | grep "Read.*:" | sed 's/Read.*: 0x\([a-z0-9]*\)/\1/'`
 	channelId=${statusRegVal:0:3}
 	streamEnable=${statusRegVal:4:1}
 
@@ -44,14 +39,14 @@ echo "Info: Number of enabled h2c channels = $h2cChannels"
 # Find enabled c2hChannels
 c2hChannels=0
 for ((i=0; i<=3; i++)); do
-	v=`$tool_path/reg_rw /dev/xdma0_control 0x1${i}00 w`
+	v=`xdma_reg_rw /dev/xdma0_control 0x1${i}00 w`
 	returnVal=$?
 	if [ $returnVal -ne 0 ]; then
 		break;
 	fi
 
-	$tool_path/reg_rw /dev/xdma0_control 0x1${i}00 w | grep "Read.*: 0x1fc" > /dev/null
-	statusRegVal=`$tool_path/reg_rw /dev/xdma0_control 0x1${i}00 w | grep "Read.*:" | sed 's/Read.*: 0x\([a-z0-9]*\)/\1/'`
+	xdma_reg_rw /dev/xdma0_control 0x1${i}00 w | grep "Read.*: 0x1fc" > /dev/null
+	statusRegVal=`xdma_reg_rw /dev/xdma0_control 0x1${i}00 w | grep "Read.*:" | sed 's/Read.*: 0x\([a-z0-9]*\)/\1/'`
 	channelId=${statusRegVal:0:3}
 
 	# there will NOT be a mix of MM & ST channels, so no need to check
@@ -80,7 +75,7 @@ testError=0
 if [ $isStreaming -eq 0 ]; then
 
 	# Run the PCIe DMA memory mapped write read test
-	./dma_memory_mapped_test.sh xdma0 $transferSize $transferCount $h2cChannels $c2hChannels
+	./xdma_memory_mapped_test.sh xdma0 $transferSize $transferCount $h2cChannels $c2hChannels
 	returnVal=$?
 	 if [ $returnVal -eq 1 ]; then
 		testError=1
@@ -91,7 +86,7 @@ else
 	# Run the PCIe DMA streaming test
 	channelPairs=$(($h2cChannels < $c2hChannels ? $h2cChannels : $c2hChannels))
 	if [ $channelPairs -gt 0 ]; then
-		./dma_streaming_test.sh $transferSize $transferCount $channelPairs
+		./xdma_streaming_test.sh $transferSize $transferCount $channelPairs
 		returnVal=$?
 		if [ $returnVal -eq 1 ]; then
 			testError=1

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_XDMA_TOOLS
+       bool "xdma-tools"
+       help
+         Tools for Xilinx XDMA driver tests

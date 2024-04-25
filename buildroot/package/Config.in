@@ -1,5 +1,6 @@
 menu "Target packages"
 
+	source "package/xdma-tools/Config.in"
 	source "package/busybox/Config.in"
 	source "package/rockchip/Config.in"
 	source "package/forlinx/Config.in"

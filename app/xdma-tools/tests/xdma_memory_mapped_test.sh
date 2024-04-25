@@ -21,8 +21,6 @@ transferCount=$3
 h2cChannels=$4
 c2hChannels=$5
 
-tool_path=../tools
-
 testError=0
 # Run the PCIe DMA memory mapped write read test
 echo "Info: Running PCIe DMA memory mapped write read test"
@@ -36,7 +34,7 @@ if [ $h2cChannels -gt 0 ]; then
 		curChannel=$(($i % $h2cChannels))
 	       	echo "Info: Writing to h2c channel $curChannel at address" \
 		       "offset $addrOffset."
-		$tool_path/dma_to_device -d /dev/${xid}_h2c_${curChannel} \
+		xdma_to_device -d /dev/${xid}_h2c_${curChannel} \
 		       	-f data/datafile${i}_4K.bin -s $transferSz \
 			-a $addrOffset -c $transferCount &
 		# If all channels have active transactions we must wait for
@@ -61,7 +59,7 @@ if [ $c2hChannels -gt 0 ]; then
 		rm -f data/output_datafile${i}_4K.bin
 		echo "Info: Reading from c2h channel $curChannel at " \
 			"address offset $addrOffset."
-		$tool_path/dma_from_device -d /dev/${xid}_c2h_${curChannel} \
+		xdma_from_device -d /dev/${xid}_c2h_${curChannel} \
 		       	-f data/output_datafile${i}_4K.bin -s $transferSz \
 		       	-a $addrOffset -c $transferCount &
 		# If all channels have active transactions we must wait for
