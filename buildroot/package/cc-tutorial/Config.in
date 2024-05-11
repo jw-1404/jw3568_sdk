@@ -1,0 +1,6 @@
+config BR2_PACKAGE_CC_TUTORIAL
+	bool "cc-tutorial"
+	select BR2_PACKAGE_CC_COMMS
+  depends on BR2_PACKAGE_HOST_CC_COMMSDSL
+	help
+    Tutorial using libcomms

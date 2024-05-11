@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SNIPER
+	bool "sniper"
+	help
+    Lightweight event-data processing framework in HEP
