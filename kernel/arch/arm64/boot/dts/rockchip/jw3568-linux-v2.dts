@@ -1,0 +1,55 @@
+#include "jw3568-common.dtsi"
+
+/ {
+	model = "JianWei JW3568 DPU (v2)";
+	compatible = "forlinx,ok3568", "rockchip,rk3568-evb1-ddr4-v10", "rockchip,rk3568";
+};
+
+// uart 3/4/5: for comm between fpga and arm (connected but floating currently)
+&uart3 {
+	// status = "okay";
+	pinctrl-0 = <&uart3m1_xfer>;
+};
+
+&uart4 {
+	// stapus = "okay";
+	pinctrl-0 = <&uart4m1_xfer>;
+};
+
+&uart5 {
+	// status = "okay";
+	pinctrl-0 = <&uart5m1_xfer>;
+};
+
+// for the spi in expansion port
+&spi0 {
+	pinctrl-names = "default", "high_speed";
+	pinctrl-0 = <&spi0m1_cs0 &spi0m1_pins>;
+	pinctrl-1 = <&spi0m1_cs0 &spi0m1_pins_hs>;
+	// status = "okay";
+
+	spi@0 {
+		compatible = "rockchip,spidev";
+		reg = <0>;
+		spi-max-frequency = <50000000>;
+	};
+};
+
+// may need CAN interface in the future
+// NOTE: overlap with i2c1 in expansion port
+&can0 {
+	assigned-clocks = <&cru CLK_CAN0>;
+	assigned-clock-rates = <200000000>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&can0m0_pins>;
+	// status = "okay";
+};
+
+&i2c1 {
+  // status = "okay";
+};
+
+
+&uart8 {
+	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
+};
