@@ -2,18 +2,12 @@
 
 case "$1" in
     start)
-		adduser forlinx << EOF
-forlinx
-forlinx
+		adduser jw3568 << EOF
+jw3568
+jw3568
 
 EOF
 
-adduser ftp << EOF
-ftp
-ftp
-
-EOF
-		
 		rm /etc/init.d/S98user
 		sync
         ;;

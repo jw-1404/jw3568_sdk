@@ -271,6 +271,14 @@
 	// status = "okay";
 };
 
+&mdio0 {
+	rgmii_phy0: phy@1 {
+		compatible = "ethernet-phy-ieee802.3-c22";
+		reg = <0x1>;
+		clocks = <&cru CLK_MAC0_OUT>;
+	};
+};
+
 &gmac1 {
 	phy-mode = "rgmii-id";
 	clock_in_out = "output";
@@ -292,19 +300,11 @@
 		     &gmac1m1_rgmii_bus
 			 &eth1m1_pins>;
 
-	// tx_delay = <0x00>;
-	// rx_delay = <0x00>;
+	tx_delay = <0x00>;
+	rx_delay = <0x00>;
 
 	phy-handle = <&rgmii_phy1>;
 	status = "okay";
-};
-
-&mdio0 {
-	rgmii_phy0: phy@1 {
-		compatible = "ethernet-phy-ieee802.3-c22";
-		reg = <0x1>;
-		clocks = <&cru CLK_MAC0_OUT>;
-	};
 };
 
 &mdio1 {
@@ -699,6 +699,7 @@
 // for external rs485 with optional auto duplexing
 &uart8 {
 	status = "okay";
+	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
 };
 
 //

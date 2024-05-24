@@ -7,7 +7,3 @@
 	model = "JianWei JW3568 DPU";
 	compatible = "forlinx,ok3568", "rockchip,rk3568-evb1-ddr4-v10", "rockchip,rk3568";
 };
-
-&uart8 {
-	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
-};
