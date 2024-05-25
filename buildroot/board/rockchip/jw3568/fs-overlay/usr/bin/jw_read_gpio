@@ -1,0 +1,40 @@
+#! /bin/sh
+
+if [ $# != 1 ]; then
+	  echo "$0 <GPIO_NAME>"
+	  echo "User:$0 GPIO3_A7"
+	  exit 0
+fi
+
+# get pin index
+VAL=$1
+
+## GPIO[N]_[A-D][0-9]
+N=${VAL:4:1}
+M=${VAL:6:1}
+I=${VAL:7:1}
+
+j=0
+for i in A B C D
+do
+	  if [ "$M" == "$i" ]; then
+	      break;
+	  fi
+	  j=`expr $j + 1`
+done
+
+GPIOID=$((${N} * 32 + ${j} * 8 + ${I}))
+
+# get current pin value
+if [ ! -d /sys/class/gpio/gpio$GPIOID ]; then
+	  echo $GPIOID > /sys/class/gpio/export
+fi
+echo in > /sys/class/gpio/gpio${GPIOID}/direction
+
+VAL=`cat /sys/class/gpio/gpio${GPIOID}/value`
+
+# print current value
+echo "$1 level: $VAL"
+
+# clean up
+# echo $GPIOID > /sys/class/gpio/unexport
