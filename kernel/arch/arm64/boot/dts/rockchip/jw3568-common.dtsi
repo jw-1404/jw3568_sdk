@@ -326,6 +326,12 @@
   status = "okay";
 };
 
+// gpu
+&gpu {
+	mali-supply = <&vdd_gpu>;
+	status = "okay";
+};
+
 // npu
 &bus_npu {
 	bus-supply = <&vdd_logic>;
