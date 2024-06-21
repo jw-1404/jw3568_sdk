@@ -2,6 +2,13 @@ menu "Jianwei packages"
 	source "package/sniper/Config.in"
 	source "package/cc-tutorial/Config.in"
 	source "package/xdma-tools/Config.in"
+	source "package/cpptoml/Config.in"
+	source "package/iceoryx/Config.in"
+	source "package/capnproto/Config.in"
+	source "package/termcolor/Config.in"
+	source "package/tcp_pubsub/Config.in"
+	source "package/ftxui/Config.in"
+	source "package/ecal/Config.in"
 endmenu
 
 menu "Target packages"
