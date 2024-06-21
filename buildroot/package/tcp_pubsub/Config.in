@@ -1,0 +1,11 @@
+config BR2_PACKAGE_TCP_PUBSUB
+	bool "tcp_pubsub"
+	depends on BR2_INSTALL_LIBSTDCPP
+	depends on BR2_USE_WCHAR
+	help
+    tcp_pubsub is a minimal publish-subscribe library that transports data via TCP.
+
+    https://github.com/eclipse-ecal/tcp_pubsub
+
+comment "tcp_pubsub needs a toolchain w/ C++, wchar"
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_USE_WCHAR

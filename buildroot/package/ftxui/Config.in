@@ -1,0 +1,14 @@
+config BR2_PACKAGE_FTXUI
+	bool "ftxui"
+	depends on BR2_INSTALL_LIBSTDCPP
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_USE_WCHAR # fmt
+	help
+    Functional Terminal (X) User interface.
+    A simple cross-platform C++ library for terminal based user interfaces!
+
+    https://github.com/ArthurSonzogni/FTXUI
+
+comment "ftxui needs a toolchain w/ C++, threads, wchar"
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_TOOLCHAIN_HAS_THREADS \
+		|| !BR2_USE_WCHAR

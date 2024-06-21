@@ -1,0 +1,9 @@
+config BR2_PACKAGE_CPPTOML
+	bool "cpptoml"
+	depends on BR2_INSTALL_LIBSTDCPP
+	depends on BR2_USE_WCHAR
+	help
+	  cpptoml is a header-only library for parsing TOML configuration files.
+
+comment "cpptoml needs a toolchain w/ C++, wchar"
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_USE_WCHAR
