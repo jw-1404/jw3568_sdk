@@ -9,6 +9,7 @@ menu "Jianwei packages"
 	source "package/tcp_pubsub/Config.in"
 	source "package/ftxui/Config.in"
 	source "package/ecal/Config.in"
+	source "package/mbpoll/Config.in"
 endmenu
 
 menu "Target packages"
