@@ -1,4 +1,5 @@
 menu "Jianwei packages"
+	source "package/daqling/Config.in"
 	source "package/sniper/Config.in"
 	source "package/cc-tutorial/Config.in"
 	source "package/xdma-tools/Config.in"
@@ -745,6 +746,7 @@ endif
 	source "package/python3/Config.in"
 if BR2_PACKAGE_PYTHON || BR2_PACKAGE_PYTHON3
 menu "External python modules"
+	source "package/python-supervisor-twiddler/Config.in"
 	source "package/python-aiocoap/Config.in"
 	source "package/python-alsaaudio/Config.in"
 	source "package/python-argh/Config.in"
