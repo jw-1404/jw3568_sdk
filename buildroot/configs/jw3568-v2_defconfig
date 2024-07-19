@@ -1,4 +1,4 @@
-### SoC ###
+### JW3568-V2 DPU ###
 
 #include "rk356x_arm64.config"
 #include "kernel.config"
