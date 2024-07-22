@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_SUPERVISOR_TWIDDLER
+	bool "python-supervisor-twiddler"
+	depends on BR2_PACKAGE_SUPERVISOR
+	help
+    RPC extension for Supervisor that allows Supervisor's configuration
+    and state to be manipulated in ways that are not normally possible at runtime.
+
+    https://github.com/mnaberez/supervisor_twiddler

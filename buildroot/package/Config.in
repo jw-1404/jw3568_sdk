@@ -1,5 +1,6 @@
 menu "Jianwei packages"
-	source "package/daqling/Config.in"
+	source "package/jw-daq/Config.in"
+	source "package/xdaq/Config.in"
 	source "package/sniper/Config.in"
 	source "package/cc-tutorial/Config.in"
 	source "package/xdma-tools/Config.in"
