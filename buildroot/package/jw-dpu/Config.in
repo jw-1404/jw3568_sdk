@@ -1,0 +1,4 @@
+config BR2_PACKAGE_JW_DPU
+       bool "jw-dpu"
+       help
+         Tools for jw3568 on-board unit tests

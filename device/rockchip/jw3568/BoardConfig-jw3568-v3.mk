@@ -49,7 +49,7 @@ export RK_OEM_DIR=oem_normal
 # OEM build on buildroot
 #export RK_OEM_BUILDIN_BUILDROOT=YES
 #userdata config
-export RK_USERDATA_DIR=userdata_normal
+export RK_USERDATA_DIR=userdata_empty
 #misc image
 export RK_MISC=wipe_all-misc.img
 #choose enable distro module

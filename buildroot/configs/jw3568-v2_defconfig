@@ -6,11 +6,11 @@
 ### jinawei-specific ###
 
 # image-info customization
-BR2_TARGET_GENERIC_ISSUE="Welcome to JW3568 DPU-Lite"
+BR2_TARGET_GENERIC_ISSUE="Welcome to JW3568 DPU"
 BR2_TARGET_GENERIC_HOSTNAME="jw3568"
 BR2_TARGET_GENERIC_ROOT_PASSWD="admin"
 BR2_TARGET_LOCALTIME="Asia/Shanghai"
-BR2_ROOTFS_OVERLAY="board/rockchip/jw3568/fs-overlay/"
+BR2_ROOTFS_OVERLAY="board/jianwei/jw3568/fs-overlay"
 BR2_TARGET_GENERIC_GETTY_BAUDRATE_115200=y
 
 # system
